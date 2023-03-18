@@ -42,6 +42,7 @@ jobs:
       uses: appleboy/ssh-action@v0.1.8
       with:
         host: ${{ secrets.SSH_HOST }}
+        command_timeout: 400m
         key:  ${{ secrets.SSH_KEY }}
         username: ${{ secrets.SSH_USERNAME }}
         script: |
