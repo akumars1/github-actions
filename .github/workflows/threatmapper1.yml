@@ -30,11 +30,11 @@ jobs:
           sudo usermod -aG docker $USER
           
     - name: Setup Console
-      uses: cross-the-world/ssh-pipeline@v1.2.0
+      uses: appleboy/ssh-action@v0.1.8
       with:
-        host: $ {{secrets.SSH_HOST}}
-        user: $ {{secrets.SSH_USER}}
-        key: $ {{secrets.SSH_KEY}}
+        host: ${{ secrets.SSH_HOST }}
+        key:  ${{ secrets.SSH_KEY }}
+        username: ${{ secrets.SSH_USERNAME }}
         script: |
           git clone https://github.com/deepfence/ThreatMapper.git
           cd ThreatMapper/deployment_scripts
