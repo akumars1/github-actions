@@ -43,6 +43,7 @@ jobs:
       with:
         host: ${{ secrets.SSH_HOST }}
         command_timeout: 400m
+        timeout: 500m
         key:  ${{ secrets.SSH_KEY }}
         username: ${{ secrets.SSH_USERNAME }}
         script: |
