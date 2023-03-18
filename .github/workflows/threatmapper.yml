@@ -14,9 +14,9 @@ jobs:
     - name: Install Docker
       uses: appleboy/ssh-action@v0.1.2
       with:
-        host: ${{secrets.SSH_HOST}}
-        key:  ${{secrets.SSH_KEY}}
-        username: ${{secrets.SSH_USERNAME}}
+        host: ${{ secrets.SSH_HOST }}
+        key:  ${{ secrets.SSH_KEY }}
+        username: ${{ secrets.SSH_USERNAME }}
         script: |
           sudo apt-get update
           sudo apt-get install ca-certificates curl gnupg lsb-release -y
