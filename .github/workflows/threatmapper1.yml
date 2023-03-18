@@ -47,7 +47,7 @@ jobs:
         key:  ${{ secrets.SSH_KEY }}
         username: ${{ secrets.SSH_USERNAME }}
         script: |
-          git clone --recurse-submodules --remote-submodules https://github.com/deepfence/ThreatMapper.git
+          git clone --recurse-submodules --remote-submodules git@github.com:deepfence/ThreatMapper.git
           cd /root/ThreatMapper
           export IMAGE_REPOSITORY=deepfenceio
           env DF_IMG_TAG=action
