@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8/>
+    <title>videojs-quality-selector Demo</title>
+    <link href="https://unpkg.com/video.js@7.5.4/dist/video-js.css" rel="stylesheet">
+    <script src="https://unpkg.com/video.js@7.5.4/dist/video.js"></script>
+    <script src="https://unpkg.com/@silvermine/videojs-quality-selector/dist/js/silvermine-videojs-quality-selector.min.js"></script>
+    <link href="https://unpkg.com/@silvermine/videojs-quality-selector/dist/css/quality-selector.css" rel="stylesheet">
+</head>
+<body>
+<h1>With Video Quality Switch</h1>
+
+<video id="video_1" class="video-js vjs-default-skin" controls preload="auto">
+    <source src="/media/hls_144p.m3u8" type="application/x-mpegURL" label="144P">
+    <source src="/media/hls_240p.m3u8" type="application/x-mpegURL" label="240P">
+    <source src="/media/hls_360p.m3u8" type="application/x-mpegURL" label="360P">
+    <source src="/media/hls_480p.m3u8" type="application/x-mpegURL" label="480P">
+    <source src="/media/hls_720p.m3u8" type="application/x-mpegURL" label="720P" selected="true">
+</video>
+
+<script>
+    videojs('video_1', {}, function () {
+        let player = this;
+        player.controlBar.addChild('QualitySelector');
+    });
+</script>
+
+</body>
+</html>
