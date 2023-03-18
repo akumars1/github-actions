@@ -46,7 +46,9 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         script: |
           git clone https://github.com/deepfence/ThreatMapper.git
-          cd /root/ThreatMapper/deployment-scripts
+          cd /root/ThreatMapper
+          export IMAGE_REPOSITORY=deepfenceio
+          env DF_IMG_TAG=action
           sh build.sh
           
           
