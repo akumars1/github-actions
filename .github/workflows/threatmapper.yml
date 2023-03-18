@@ -7,20 +7,16 @@ on:
   push:
     branches: [ "master" ]
 
-permissions:
-  contents: read
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - name: Install Docker
-      uses: cross-the-world/ssh-pipeline@v1.2.0
+      uses: appleboy/ssh-action@v0.1.2
       with:
-        # ssh remote host
-        host: $ {{secrets.SSH_HOST}}
-        user: $ {{secrets.SSH_USER}}
-        key: $ {{secrets.SSH_KEY}}
+        host: ${{secrets.SSH_HOST}}
+        key:  ${{secrets.SSH_KEY}}
+        username: ${{secrets.SSH_USERNAME}}
         script: |
           sudo apt-get update
           sudo apt-get install ca-certificates curl gnupg lsb-release -y
@@ -40,7 +36,8 @@ jobs:
         script: |
           git clone https://github.com/deepfence/ThreatMapper.git
           cd ThreatMapper/deployment_scripts
-          export IMAGE_REPOSITORY=deepfenceio; env DF_IMG_TAG=1.4.3-rc2 docker compose up -d
+          export IMAGE_REPOSITORY=deepfenceio 
+          env DF_IMG_TAG=1.4.3-rc2 docker compose up -d
           
           
           
