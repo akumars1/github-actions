@@ -28,8 +28,17 @@ jobs:
           sudo apt-get update
           sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
           sudo usermod -aG docker $USER
+          apt-get install make -y
+          curl -OL https://golang.org/dl/go1.16.7.linux-amd64.tar.gz
+          sha256sum go1.16.7.linux-amd64.tar.gz
+          sudo tar -C /usr/local -xvf go1.16.7.linux-amd64.tar.gz
+          touch ~/.profile
+          echo 'export PATH=$PATH:/usr/local/go/bin' >>~/.profile
+          source ~/.profile
+          go version
+
           
-    - name: Setup Console
+    - name: prepare images
       uses: appleboy/ssh-action@v0.1.8
       with:
         host: ${{ secrets.SSH_HOST }}
@@ -38,9 +47,7 @@ jobs:
         script: |
           git clone https://github.com/deepfence/ThreatMapper.git
           cd /root/ThreatMapper/deployment-scripts
-          export IMAGE_REPOSITORY=deepfenceio 
-          env DF_IMG_TAG=1.4.3-rc2 docker compose up -d
-          
+          sh build.sh
           
           
       
