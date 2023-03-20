@@ -30,7 +30,7 @@ jobs:
           sudo usermod -aG docker $USER
           apt-get install make -y
           curl -OL https://golang.org/dl/go1.16.7.linux-amd64.tar.gz
-          sha256sum go1.16.7.linux-amd64.tar.gz
+          sha256sum go1.19.7.linux-amd64.tar.gz
           sudo tar -C /usr/local -xvf go1.16.7.linux-amd64.tar.gz
           touch ~/.profile
           echo 'export PATH=$PATH:/usr/local/go/bin' >>~/.profile
@@ -51,7 +51,7 @@ jobs:
           cd /root/ThreatMapper
           export IMAGE_REPOSITORY=deepfenceio
           env DF_IMG_TAG=action
-          sh build.sh
+          make
           
           
       
